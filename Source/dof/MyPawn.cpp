@@ -10,6 +10,7 @@ AMyPawn::AMyPawn()
  	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 	this->vitesse = 0.0f;
+	this->maxVitesse = 500.0f;
 }
 
 // Called when the game starts or when spawned
@@ -34,7 +35,7 @@ void AMyPawn::SetupPlayerInputComponent(class UInputComponent* InputComponent)
 }
 
 void AMyPawn::addAcceleration(float pAcceleration){
-	if (((this->vitesse + pAcceleration) < 30) && ((this->vitesse + pAcceleration) >= 0)){
+	if (((this->vitesse + pAcceleration) < this->maxVitesse) && ((this->vitesse + pAcceleration) >= 0)){
 		this->vitesse += pAcceleration;
 	}
 	else{
@@ -42,7 +43,7 @@ void AMyPawn::addAcceleration(float pAcceleration){
 			this->vitesse = 0;
 		}
 		else{
-			this->vitesse = 30;
+			this->vitesse = this->maxVitesse;
 		}
 	}
 	this->vitesse += pAcceleration;
