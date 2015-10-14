@@ -33,6 +33,8 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "ship")
 		float getVitesse();
 
+	float maxVitesse;
+
 
 	
 	
